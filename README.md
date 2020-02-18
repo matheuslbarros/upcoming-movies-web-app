@@ -24,6 +24,9 @@ Directory structure:
 # install dependencies
 $ npm install
 
+# copy env config (you must configure your variables in this file)
+$ cp .env.sample to .env
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 
