@@ -16,4 +16,13 @@ export default {
     return response.data
   },
 
+  async loadMovies ({ page, query }) {
+    const params = {
+      page,
+      query
+    }
+    const response = await axios.get('/api/search/movie?' + querystring.stringify(params))
+    return response.data
+  }
+
 }
