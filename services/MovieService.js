@@ -11,4 +11,9 @@ export default {
     return response.data
   },
 
+  async loadMovieDetail ({ id }) {
+    const response = await axios.get(`/api/movie/${id}`)
+    return response.data
+  },
+
 }
