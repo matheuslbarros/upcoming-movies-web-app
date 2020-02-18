@@ -1,6 +1,6 @@
 
 <template>
-  <div class="index-page">
+  <div class="search-page">
     <Container>
       <MovieCardList :movies="movies" />
       <ButtonGroup>
@@ -28,39 +28,40 @@ export default {
     Button
   },
   computed: mapState({
-    page: state => state.movies.page,
-    pages: state => state.movies.pages,
-    movies: state => state.movies.results
+    page: state => state.search.page,
+    pages: state => state.search.pages,
+    movies: state => state.search.results
   }),
   watch: {
     $route () {
-      this.loadUpcomingMovies(this.getParams())
+      this.loadMovies(this.getParams())
     }
   },
   created () {
-    this.loadUpcomingMovies(this.getParams())
+    this.loadMovies(this.getParams())
   },
   methods: {
     getParams () {
       return {
-        page: Number(this.$route.query.page) || 1
+        page: Number(this.$route.query.page) || 1,
+        query: this.$route.query.query
       }
     },
     onLoadMoreClick () {
       const params = this.getParams()
       params.page += 1
 
-      this.$router.push('/?' + querystring.stringify(params))
+      this.$router.push('/search?' + querystring.stringify(params))
     },
     ...mapActions({
-      loadUpcomingMovies: 'movies/loadUpcomingMovies'
+      loadMovies: 'search/loadMovies'
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.index-page {
+.search-page {
   margin-top: 65px;
   margin-bottom: 65px;
 }

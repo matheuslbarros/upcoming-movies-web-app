@@ -1,8 +1,22 @@
 <template>
-  <div>
+  <main>
+    <Toolbar />
     <nuxt />
-  </div>
+    <Footer />
+  </main>
 </template>
+
+<script>
+import Toolbar from '../components/Toolbar'
+import Footer from '../components/Footer'
+
+export default {
+  components: {
+    Toolbar,
+    Footer
+  }
+}
+</script>
 
 <style>
 html {
@@ -13,6 +27,12 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  color: white;
+  background: black;
+  scroll-behavior: smooth;
 }
 
 *,
